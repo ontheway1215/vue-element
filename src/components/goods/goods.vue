@@ -36,7 +36,7 @@
         </li>
       </ul>
     </div>
-    <shopcart :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+    <shopcart ref="shopcart" :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
   </div>
 </template>
 
@@ -72,6 +72,9 @@
           });
         };
       });
+//      this.$on('cartadd', (target) => {
+//        this._drop(target);
+//      });
     },
     computed: {
       currentIndex() {
@@ -105,6 +108,9 @@
         let el = foodList[index];
         this.foodsScroll.scrollToElement(el, 300);
       },
+      _drop(target) {
+        this.$refs.shopcart.drop(target);
+      },
       _initScroll() {
         this.menuScroll = new BScroll(this.$refs.menuWrapper, {
           click: true
@@ -131,7 +137,8 @@
       }
     },
     components: {
-      shopcart, cartcontrol
+      shopcart,
+      cartcontrol
     }
   };
 </script>

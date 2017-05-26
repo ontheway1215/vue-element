@@ -121,6 +121,9 @@
           }
         }
       },
+      addFood(target) {
+        this.drop(target);
+      },
       beforeDrop(el) {
         let count = this.balls.length;
         while (count--) {
@@ -129,12 +132,13 @@
             let rect = ball.el.getBoundingClientRect();
             let x = rect.left - 32;
             let y = -(window.innerHeight - rect.top - 22);
+            console.log(y);
             el.style.display = '';
-            el.style.webkitTransform = `translate3d(0, ${y}px, 0)`;
-            el.style.transform = `translate3d(0, ${y}px, 0)`;
+            el.style.webkitTransform = `translate3d(0,${y}px,0)`;
+            el.style.transform = `translate3d(0,${y}px,0)`;
             let inner = el.getElementsByClassName('inner-hook')[0];
-            inner.style.webkitTransform = `translate3d(${x}px, 0, 0)`;
-            inner.style.transform = `translate3d(${x}px, 0, 0)`;
+            inner.style.webkitTransform = `translate3d(${x}px,0,0)`;
+            inner.style.transform = `translate3d(${x}px,0,0)`;
           }
         }
       },
@@ -255,12 +259,12 @@
         left 32px
         bottom 22px
         z-index 200
-        transition all 0.4s cubic-bezier(0.49s, -0.29s, 0.75s, 0.41)
-          .inner
-            width 16px
-            height 16px
-            border-radius 50%
-            background rgb(0, 160, 220)
-            transition all 0.4s linear
+        transition all 0.4s cubic-bezier(0.49, -0.29, 0.75, 0.41)
+        .inner
+          width 16px
+          height 16px
+          border-radius 50%
+          background rgb(0, 160, 220)
+          transition all 0.4s linear
 
 </style>

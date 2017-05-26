@@ -28,7 +28,7 @@
                   <span class="now">￥{{food.price}}</span><span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  <cartcontrol :food="food"></cartcontrol>
+                  <cartcontrol :food="food" @add="addFood"></cartcontrol>
                 </div>
               </div>
             </li>
@@ -72,9 +72,6 @@
           });
         };
       });
-//      this.$on('cartadd', (target) => {
-//        this._drop(target);
-//      });
     },
     computed: {
       currentIndex() {
@@ -108,8 +105,14 @@
         let el = foodList[index];
         this.foodsScroll.scrollToElement(el, 300);
       },
+      addFood(target) {
+        this._drop(target);
+      },
       _drop(target) {
-        this.$refs.shopcart.drop(target);
+        // 体验优化，异步执行下落动画
+        this.$nextTick(() => {
+          this.$refs.shopcart.drop(target);
+        });
       },
       _initScroll() {
         this.menuScroll = new BScroll(this.$refs.menuWrapper, {

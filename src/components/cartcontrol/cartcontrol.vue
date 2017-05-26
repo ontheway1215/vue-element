@@ -30,7 +30,7 @@
         } else {
           this.food.count ++;
         }
-        this.$emit('cartadd', event.target);
+        this.$emit('add', event.target);
       },
       decreaseCart(event) {
         if (!event._constructed) {
@@ -60,10 +60,10 @@
         transform rotate(0)
     .move-enter-active, .move-leave-active
       opacity 1
-      transform translate3D(0, 0, 0)
+      transform translate3d(0, 0, 0)
     .move-enter, .move-leave-active
       opacity 0
-      transform translate3D(24px, 0, 0)
+      transform translate3d(24px, 0, 0)
       .inner
         transform rotate(180deg)
     .cart-count

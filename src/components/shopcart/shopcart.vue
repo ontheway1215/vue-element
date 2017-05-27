@@ -244,7 +244,6 @@
     z-index 50
     width 100%
     height 48px
-    background #000
     .content
       display flex
       background #141d27

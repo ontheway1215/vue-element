@@ -21,32 +21,34 @@ var goods = appData.goods;
 var ratings = appData.ratings;
 
 
-var apiRouter = express.Router();
+var apiRouters = express.Router();
 
-apiRouter.get('./seller', function (req, res) {
+apiRouters.get('/seller', function (req, res) {
   res.json({
     errno: 0,
     data: seller
   });
 });
 
-apiRouter.get('/goods', function (req, res) {
+apiRouters.get('/goods', function (req, res) {
   res.json({
     errno: 0,
     data: goods
   });
 });
 
-apiRouter.get('./ratings', function (req, res) {
+apiRouters.get('/ratings', function (req, res) {
   res.json({
     errno: 0,
     data: ratings
   });
 });
 
+app.use('/api', apiRouters);
+
 app.use(express.static('./dist'));
 
-module.export = app.listen(port,  function (err) {
+module.exports = app.listen(port, function (err) {
   if (err) {
     console.log(err);
     return;

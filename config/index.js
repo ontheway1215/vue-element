@@ -20,7 +20,7 @@ module.exports = {
     // `npm run build --report`
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report,
-    port: 9000
+    port: 8080
   },
   dev: {
     env: require('./dev.env'),
